@@ -19,11 +19,3 @@ local commands = require "lvim.core.commands"
 commands.load(commands.defaults)
 
 require("lvim.lsp").setup()
-
-require("lvim.core.telescope").setup{
-  pickers = {
-    find_files = {
-      find_command = { hidden = true },
-    }
-  }
-}

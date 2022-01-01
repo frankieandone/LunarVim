@@ -74,6 +74,16 @@ return {
     disable = not lvim.builtin.telescope.active,
   },
 
+  -- nvim-telescope-frecency.nvim: sorts file list by usage
+{
+  "nvim-telescope/telescope-frecency.nvim",
+  config = function()
+    require"telescope".load_extension("frecency")
+    vim.api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
+  end,
+  requires = {"tami5/sqlite.lua"}
+},
+
   -- telescope-project: switch between projects
   {
     "nvim-telescope/telescope-project.nvim",
@@ -526,10 +536,4 @@ return {
 },
 
 
-  
-  -- vim-wakatime: metrics, insights, and time tracking automatically generated from your programming activity
-  -- Once installed and synced, add your WakaTime API Key via :WakaTimeApiKey command
-  {
-    "wakatime/vim-wakatime"
-  }
 }
