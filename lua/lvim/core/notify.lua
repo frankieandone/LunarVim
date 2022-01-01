@@ -4,7 +4,7 @@ function M.config()
   local pallete = require "onedarker.palette"
 
   lvim.builtin.notify = {
-    active = false,
+    active = true,
     on_config_done = nil,
     -- TODO: update after https://github.com/rcarriga/nvim-notify/pull/24
     opts = {

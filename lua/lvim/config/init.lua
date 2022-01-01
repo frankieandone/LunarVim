@@ -78,7 +78,7 @@ function M:load(config_path)
     if utils.is_file(user_config_file) then
       Log:warn("Invalid configuration: " .. err)
     else
-      Log:warn(string.format("Unable to find configuration file [%s]", config_path))
+      -- Log:warn(string.format("Unable to find configuration file [%s]", config_path))
     end
   end
 

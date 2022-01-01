@@ -64,6 +64,15 @@ M.config = function()
       ["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
     },
     mappings = {
+      ["d"] = {
+        name = "Diagnostics",
+        t = { "<cmd>TroubleToggle<cr>", "trouble" },
+        w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+        d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
+        q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+        l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+        r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+      },
       ["w"] = { "<cmd>w!<CR>", "Save" },
       ["q"] = { "<cmd>q!<CR>", "Quit" },
       ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
