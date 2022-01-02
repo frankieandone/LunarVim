@@ -55,7 +55,11 @@ function M.config()
           ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         },
       },
-      file_ignore_patterns = {},
+      file_ignore_patterns = {
+        "node_modules",
+        ".idea",
+        "yarn.lock",
+      },
       path_display = { shorten = 5 },
       winblend = 0,
       border = {},

@@ -74,16 +74,6 @@ return {
     disable = not lvim.builtin.telescope.active,
   },
 
-  -- nvim-telescope-frecency.nvim: sorts file list by usage
-{
-  "nvim-telescope/telescope-frecency.nvim",
-  config = function()
-    require"telescope".load_extension("frecency")
-    vim.api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
-  end,
-  requires = {"tami5/sqlite.lua"}
-},
-
   -- telescope-project: switch between projects
   {
     "nvim-telescope/telescope-project.nvim",
@@ -267,15 +257,15 @@ return {
     disable = not lvim.builtin.dap.active,
   },
 
-  -- Dashboard
-  {
-    "ChristianChiarulli/dashboard-nvim",
-    event = "BufWinEnter",
-    config = function()
-      require("lvim.core.dashboard").setup()
-    end,
-    disable = not lvim.builtin.dashboard.active,
-  },
+  -- -- Dashboard
+  -- {
+  --   "ChristianChiarulli/dashboard-nvim",
+  --   event = "BufWinEnter",
+  --   config = function()
+  --     require("lvim.core.dashboard").setup()
+  --   end,
+  --   disable = not lvim.builtin.dashboard.active,
+  -- },
 
   -- Terminal
   {
@@ -442,12 +432,6 @@ return {
     config = function()
       require "lsp_signature".setup()
     end
-  },
-
-  -- touble.nvim
-  {
-    "folke/trouble.nvim",
-      cmd = "TroubleToggle",
   },
 
   -- -- autosave

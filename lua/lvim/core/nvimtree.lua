@@ -94,7 +94,7 @@ function M.config()
       },
     },
   }
-  lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" }
+  lvim.builtin.which_key.mappings["e"] = { "<cmd>NvimTreeToggle<CR>", "project structure" }
 end
 
 function M.setup()

@@ -58,7 +58,7 @@ M.config = function(config)
 
     footer = { "lunarvim.org" },
   }
-  lvim.builtin.which_key.mappings[";"] = { "<cmd>Dashboard<CR>", "Dashboard" }
+  -- lvim.builtin.which_key.mappings[";"] = { "<cmd>Dashboard<CR>", "Dashboard" }
 end
 
 M.setup = function()

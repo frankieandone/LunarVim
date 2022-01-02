@@ -24,7 +24,7 @@ M.config = function()
       },
       icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-        separator = "➜", -- symbol used between a key and it's label
+        separator = "=>", -- symbol used between a key and it's label
         group = "+", -- symbol prepended to a group
       },
       window = {
@@ -36,7 +36,8 @@ M.config = function()
       layout = {
         height = { min = 4, max = 25 }, -- min and max height of the columns
         width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 3, -- spacing between columns
+        spacing = 3, -- spacing between columns,
+        align = "center",
       },
       hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
       show_help = true, -- show help message on the command line when the popup is visible
@@ -64,23 +65,17 @@ M.config = function()
       ["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
     },
     mappings = {
-      ["d"] = {
-        name = "Diagnostics",
-        t = { "<cmd>TroubleToggle<cr>", "trouble" },
-        w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-        d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-        q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-        l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-        r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+      ["<leader>"] = {
+       name = "frankieandone",
       },
-      ["w"] = { "<cmd>w!<CR>", "Save" },
-      ["q"] = { "<cmd>q!<CR>", "Quit" },
-      ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
-      ["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
-      ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
-      ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+      ["w"] = { "<cmd>w!<CR>", "save" },
+      -- ["q"] = { "<cmd>q!<CR>", "Quit" },
+        -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+      -- ["c"] = { "<cmd>BufferClose!<CR>", "close current buffer" },
+      -- ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
+      -- ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
       b = {
-        name = "Buffers",
+        name = "buffers",
         j = { "<cmd>BufferPick<cr>", "Jump" },
         f = { "<cmd>Telescope buffers<cr>", "Find" },
         b = { "<cmd>b#<cr>", "Previous" },
@@ -103,15 +98,15 @@ M.config = function()
           "Sort by language",
         },
       },
-      p = {
-        name = "Packer",
-        c = { "<cmd>PackerCompile<cr>", "Compile" },
-        i = { "<cmd>PackerInstall<cr>", "Install" },
-        r = { "<cmd>lua require('lvim.plugin-loader').recompile()<cr>", "Re-compile" },
-        s = { "<cmd>PackerSync<cr>", "Sync" },
-        S = { "<cmd>PackerStatus<cr>", "Status" },
-        u = { "<cmd>PackerUpdate<cr>", "Update" },
-      },
+      -- p = {
+        -- name = "Packer",
+        -- c = { "<cmd>PackerCompile<cr>", "Compile" },
+        -- i = { "<cmd>PackerInstall<cr>", "Install" },
+        -- r = { "<cmd>lua require('lvim.plugin-loader').recompile()<cr>", "Re-compile" },
+        -- s = { "<cmd>PackerSync<cr>", "Sync" },
+        -- S = { "<cmd>PackerStatus<cr>", "Status" },
+        -- u = { "<cmd>PackerUpdate<cr>", "Update" },
+      -- },
 
       -- " Available Debug Adapters:
       -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
@@ -121,7 +116,7 @@ M.config = function()
       -- "   https://microsoft.github.io/debug-adapter-protocol/
       -- " Debugging
       g = {
-        name = "Git",
+        name = "git",
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
         l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -147,7 +142,7 @@ M.config = function()
       },
 
       l = {
-        name = "LSP",
+        name = "lsp",
         a = { "<cmd>lua require('lvim.core.telescope').code_actions()<cr>", "Code Action" },
         d = {
           "<cmd>Telescope lsp_document_diagnostics<cr>",
@@ -184,7 +179,7 @@ M.config = function()
         },
       },
       L = {
-        name = "+LunarVim",
+        name = "Lvim",
         c = {
           "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",
           "Edit config.lua",
@@ -235,8 +230,8 @@ M.config = function()
         r = { "<cmd>LvimReload<cr>", "Reload LunarVim's configuration" },
         u = { "<cmd>LvimUpdate<cr>", "Update LunarVim" },
       },
-      s = {
-        name = "Search",
+      t = {
+        name = "telescope",
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>Telescope find_files<cr>", "Find File" },
@@ -252,10 +247,11 @@ M.config = function()
           "Colorscheme with Preview",
         },
       },
-      T = {
-        name = "Treesitter",
-        i = { ":TSConfigInfo<cr>", "Info" },
-      },
+      -- T = {
+      --   name = "Treesitter",
+      --   i = { ":TSConfigInfo<cr>", "Info" },
+      -- },
+      
     },
   }
 end
