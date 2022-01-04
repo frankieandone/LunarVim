@@ -519,5 +519,8 @@ return {
   end
 },
 
+{
+  "watzon/vim-edge-template"
+}
 
 }

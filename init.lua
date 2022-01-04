@@ -20,19 +20,13 @@ commands.load(commands.defaults)
 
 require("lvim.lsp").setup()
 
-lvim.keys.normal_mode = {
-    -- Disable Ex mode, beause what the fuck is that...
-	{ "Q", "<NOP>" },
-    -- Use CTRL+C instead of <ESC>...
-	{ "<C-c>", "<ESC>" },
-}
-
 -- cannot use <D-s> in mac. have to use iTerm2 global key shortcut cmd+s=:w\n
 -- vim.api.nvim_set_keymap('n', '<D-s>', ':w<CR>', {noremap=true, silent=true, expr=false})
 
 -- Disable Ex mode, beause what the fuck is that...
 vim.api.nvim_set_keymap('n', 'Q',  '', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', 'qq', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'q:', '', { noremap = true, silent = true })
 
 -- sets outlined symbols as delimiters when undoing
 vim.api.nvim_set_keymap('i', ',', ',<c-g>u', {noremap=true, silent=true, expr=false})
