@@ -28,6 +28,37 @@ require('luatab').setup{
     separator = function() return '' end,
 }
 
+require('harpoon').setup({
+    -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
+    save_on_toggle = false,
+    -- saves the harpoon file upon every change. disabling is unrecommended.
+    save_on_change = true,
+    -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
+    enter_on_sendcmd = false,
+    -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
+    tmux_autoclose_windows = false,
+    -- filetypes that you want to prevent from adding to the harpoon list menu.
+    excluded_filetypes = { "harpoon" }
+})
+
+vim.api.nvim_set_keymap('n', ';h', [[<Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';a', [[<Cmd>lua require("harpoon.mark").add_file()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', ';l', [[<Cmd>lua require("harpoon.ui").nav_next()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', ';h', [[<Cmd>lua require("harpoon.ui").nav_prev()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', ';1', [[<Cmd>lua require("harpoon.ui").nav_file(1)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';2', [[<Cmd>lua require("harpoon.ui").nav_file(2)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';3', [[<Cmd>lua require("harpoon.ui").nav_file(3)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';4', [[<Cmd>lua require("harpoon.ui").nav_file(4)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';5', [[<Cmd>lua require("harpoon.ui").nav_file(5)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';6', [[<Cmd>lua require("harpoon.ui").nav_file(6)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';7', [[<Cmd>lua require("harpoon.ui").nav_file(7)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';8', [[<Cmd>lua require("harpoon.ui").nav_file(8)<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';9', [[<Cmd>lua require("harpoon.ui").nav_file(9)<CR>]], { noremap = true, silent = true })
+
+
 -- cannot use <D-s> in mac. have to use iTerm2 global key shortcut cmd+s=:w\n
 -- vim.api.nvim_set_keymap('n', '<D-s>', ':w<CR>', {noremap=true, silent=true, expr=false})
 
