@@ -39,8 +39,17 @@ M.config = function()
         spacing = 3, -- spacing between columns,
         align = "center",
       },
-      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-      show_help = true, -- show help message on the command line when the popup is visible
+      key_labels = {
+        -- override the label used to display some keys. It doesn't effect WK in any other way.
+        -- For example:
+        ["<space>"] = "SPC",
+        ["<cr>"] = "RET",
+        ["<CR>"] = "RET",
+        ["<tab>"] = "TAB",
+      },
+      ignore_missing = false,
+      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "<cr", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+      show_help = false, -- show help message on the command line when the popup is visible
     },
 
     opts = {

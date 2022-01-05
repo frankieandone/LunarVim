@@ -524,6 +524,16 @@ return {
 },
 
 { 'alvarosevilla95/luatab.nvim', 
-requires='kyazdani42/nvim-web-devicons' }
+requires='kyazdani42/nvim-web-devicons' },
+
+{
+  'wojciechkepka/vim-github-dark'
+},
+
+{
+  "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+},
+
 
 }

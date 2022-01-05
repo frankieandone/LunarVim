@@ -46,6 +46,7 @@ vim.api.nvim_set_keymap('i', ':', ':<c-g>u', {noremap=true, silent=true, expr=fa
 vim.api.nvim_set_keymap('i', '-', '-<c-g>u', {noremap=true, silent=true, expr=false})
 
 vim.api.nvim_set_keymap('n', '<leader><leader>f<CR>',  [[<Cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>f<space>',  [[<Cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>fb<CR>',  [[<Cmd>lua require('telescope.builtin').file_browser({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
 
 -- vim.api.nvim_set_keymap('n', '<leader><leader>f',  [[<Cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true }) 
@@ -77,3 +78,17 @@ vim.api.nvim_set_keymap('n', '<leader><leader>map<CR>',  [[<Cmd>lua require('tel
 
 -- vim.api.nvim_set_keymap('n', '<leader><leader>j',  [[<Cmd>lua require('telescope.builtin').lsp_document_diagnostics({line_width=80})<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader><leader>k<CR>',  [[<Cmd>lua require('telescope.builtin').lsp_code_actions()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>k<CR>', "<cmd>TroubleToggle workspace_diagnostics<cr>" , { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k<space>', "<cmd>TroubleToggle workspace_diagnostics<cr>" , { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>kd', "<cmd>TroubleToggle document_diagnostics<cr>" , { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>kd<CR>', "<cmd>TroubleToggle document_diagnostics<cr>" , { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>kd<space>', "<cmd>TroubleToggle document_diagnostics<cr>" , { noremap = true, silent = true })
+
+
+vim.api.nvim_set_keymap('n', '<leader>kq', "<cmd>TroubleToggle quickfix<cr>", {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap('n', '<leader>kl<CR>', "<cmd>TroubleToggle loclist<cr>" , { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>kr', "<cmd>TroubleToggle lsp_references<cr>", {noremap = true, silent = true})
