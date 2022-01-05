@@ -45,35 +45,35 @@ vim.api.nvim_set_keymap('i', ';', ';<c-g>u', {noremap=true, silent=true, expr=fa
 vim.api.nvim_set_keymap('i', ':', ':<c-g>u', {noremap=true, silent=true, expr=false})
 vim.api.nvim_set_keymap('i', '-', '-<c-g>u', {noremap=true, silent=true, expr=false})
 
-vim.api.nvim_set_keymap('n', '<leader><leader>f',  [[<Cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>fb',  [[<Cmd>lua require('telescope.builtin').file_browser({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>f<CR>',  [[<Cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>fb<CR>',  [[<Cmd>lua require('telescope.builtin').file_browser({hidden=true, no_ignore=true, follow=true})<CR>]], { noremap = true, silent = true })
 
 -- vim.api.nvim_set_keymap('n', '<leader><leader>f',  [[<Cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true }) 
 
-vim.api.nvim_set_keymap('n', '<leader><leader>s',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>sd',  [[<Cmd>lua require('telescope.builtin').grep_string({grep_open_files=true})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>sb',  [[<Cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>s<CR>',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>sd<CR>',  [[<Cmd>lua require('telescope.builtin').grep_string({grep_open_files=true})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>sb<CR>',  [[<Cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>gf',  [[<Cmd>lua require('telescope.builtin').git_status()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>gf<CR>',  [[<Cmd>lua require('telescope.builtin').git_status()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>b',  [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>e',  [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>p',  [[<Cmd>lua require('telescope.builtin').commands()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>b<CR>',  [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>e<CR>',  [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>p<CR>',  [[<Cmd>lua require('telescope.builtin').commands()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>t',  [[<Cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>t<CR>',  [[<Cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>y',  [[<Cmd>lua require('telescope.builtin').search_history()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>t',  [[<Cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>sbt',  [[<Cmd>lua require('telescope.builtin').current_buffer_tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>y<CR>',  [[<Cmd>lua require('telescope.builtin').search_history()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>t<CR>',  [[<Cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>sbt<CR>',  [[<Cmd>lua require('telescope.builtin').current_buffer_tags()<CR>]], { noremap = true, silent = true })
 
 
-vim.api.nvim_set_keymap('n', '<leader><leader>H',  [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>M',  [[<Cmd>lua require('telescope.builtin').man_pages()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>q',  [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>H<CR>',  [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>M<CR>',  [[<Cmd>lua require('telescope.builtin').man_pages()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>q<CR>',  [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>hl',  [[<Cmd>lua require('telescope.builtin').highlights()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>hl<CR>',  [[<Cmd>lua require('telescope.builtin').highlights()<CR>]], { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader><leader>map',  [[<Cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>map<CR>',  [[<Cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
 
 -- vim.api.nvim_set_keymap('n', '<leader><leader>j',  [[<Cmd>lua require('telescope.builtin').lsp_document_diagnostics({line_width=80})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><leader>k',  [[<Cmd>lua require('telescope.builtin').lsp_code_actions()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>k<CR>',  [[<Cmd>lua require('telescope.builtin').lsp_code_actions()<CR>]], { noremap = true, silent = true })
