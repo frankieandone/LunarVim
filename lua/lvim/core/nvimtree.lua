@@ -69,7 +69,8 @@ function M.config()
       folder_arrows = 1,
       tree_width = 30,
     },
-    quit_on_open = 0,
+    -- closes nvim-tree.lua when a file is opened
+    quit_on_open = 1,
     git_hl = 1,
     disable_window_picker = 0,
     root_folder_modifier = ":t",

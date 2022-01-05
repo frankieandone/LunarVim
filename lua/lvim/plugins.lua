@@ -521,6 +521,9 @@ return {
 
 {
   "watzon/vim-edge-template"
-}
+},
+
+{ 'alvarosevilla95/luatab.nvim', 
+requires='kyazdani42/nvim-web-devicons' }
 
 }

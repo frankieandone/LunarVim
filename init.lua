@@ -20,6 +20,14 @@ commands.load(commands.defaults)
 
 require("lvim.lsp").setup()
 
+require('luatab').setup{
+    title = function() return '' end,
+    modified = function() return '' end,
+    windowCount = function() return '' end,
+    devicon = function() return '' end,
+    separator = function() return '' end,
+}
+
 -- cannot use <D-s> in mac. have to use iTerm2 global key shortcut cmd+s=:w\n
 -- vim.api.nvim_set_keymap('n', '<D-s>', ':w<CR>', {noremap=true, silent=true, expr=false})
 
