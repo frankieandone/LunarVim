@@ -28,6 +28,41 @@ require('luatab').setup{
     separator = function() return '' end,
 }
 
+require 'colorizer'.setup()
+
+vim.o.background = 'dark'
+require('ayu.config').mirage = false
+require('ayu').colorscheme()
+-- vim.cmd[[colorscheme tokyonight]]
+
+-- require('lualine').setup {
+--   options = {
+--     -- ... your lualine config
+--     theme = 'tokyonight'
+--     -- ... your lualine config
+--   }
+-- }
+
+-- Example config in Lua
+-- require("github-theme").setup({
+--     theme_style = "dark",
+--     function_style = "italic",
+--     sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  
+--     -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+--     colors = {hint = "orange", error = "#ff0000"},
+  
+--     -- Overwrite the highlight groups
+--     overrides = function(c)
+--       return {
+--         htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
+--         DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
+--         -- this will remove the highlight groups
+--         TSField = {},
+--       }
+--     end
+--   })
+
 require('harpoon').setup({
     -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
     save_on_toggle = false,
@@ -41,8 +76,8 @@ require('harpoon').setup({
     excluded_filetypes = { "harpoon" }
 })
 
-vim.api.nvim_set_keymap('n', ';h', [[<Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', ';a', [[<Cmd>lua require("harpoon.mark").add_file()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';;', [[<Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ';a', [[<Cmd>lua require("harpoon.mark").add_file()<CR>]], { noremap = true, silent = false })
 
 vim.api.nvim_set_keymap('n', ';l', [[<Cmd>lua require("harpoon.ui").nav_next()<CR>]], { noremap = true, silent = true })
 
