@@ -38,6 +38,12 @@ function M.config()
         "--smart-case",
         "--hidden",
         "--glob=!.git/",
+        "--no-require-git",
+
+        -- -u,  --unrestricted 
+        -- Reduce the level of "smart" searching. A single -u won’t respect .gitignore (etc.) files (--no-ignore). Two -u flags will additionally search hidden files and directories (-./--hidden). Three -u flags will additionally search binary files (--binary).
+        -- "-uu",
+        
       },
       mappings = {
         i = {
@@ -59,6 +65,15 @@ function M.config()
         "node_modules",
         ".idea",
         "yarn.lock",
+        "yarn-error.log",
+        ".bat",
+        ".DS_STORE",
+        ".git",
+        ".bin",
+        ".lock",
+        "build",
+        "generated",
+        "iml",
       },
       path_display = { shorten = 5 },
       winblend = 0,
@@ -67,8 +82,8 @@ function M.config()
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       pickers = {
-        find_files = {
-          find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
+        find_files = { 
+          find_command = { "fd", "--type=file", "--ignore-file=.git,node_modules,.log", "--smart-case", },
         },
         live_grep = {
           --@usage don't include the filename in the search results
