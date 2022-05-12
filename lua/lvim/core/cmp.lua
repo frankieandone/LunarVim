@@ -170,6 +170,7 @@ M.config = function()
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
+      max_width = 0,
       kind_icons = {
         Class = " ",
         Color = " ",
@@ -206,6 +207,7 @@ M.config = function()
         vsnip = "(Snippet)",
         luasnip = "(Snippet)",
         buffer = "(Buffer)",
+        tmux = "(TMUX)",
       },
       duplicates = {
         buffer = 1,
@@ -215,7 +217,13 @@ M.config = function()
       },
       duplicates_default = 0,
       format = function(entry, vim_item)
-        vim_item.kind = lvim.builtin.cmp.formatting.kind_icons[vim_item.kind]
+        local max_width = lvim.builtin.cmp.formatting.max_width
+        if max_width ~= 0 and #vim_item.abbr > max_width then
+          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. "…"
+        end
+        if lvim.use_icons then
+          vim_item.kind = lvim.builtin.cmp.formatting.kind_icons[vim_item.kind]
+        end
         vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]
         vim_item.dup = lvim.builtin.cmp.formatting.duplicates[entry.source.name]
           or lvim.builtin.cmp.formatting.duplicates_default
@@ -227,8 +235,9 @@ M.config = function()
         require("luasnip").lsp_expand(args.body)
       end,
     },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     sources = {
       { name = "nvim_lsp" },
@@ -241,8 +250,9 @@ M.config = function()
       { name = "emoji" },
       { name = "treesitter" },
       { name = "crates" },
+      { name = "tmux" },
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert {
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       ["<C-j>"] = cmp.mapping.select_next_item(),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
