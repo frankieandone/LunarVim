@@ -41,7 +41,6 @@ M.config = function()
     -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
     execs = {
       { "lazygit", "<leader>gg", "LazyGit", "float" },
-      { "lazygit", "<c-\\><c-g>", "LazyGit", "float" },
     },
   }
 end
@@ -76,23 +75,9 @@ M.add_exec = function(opts)
     return
   end
 
-  local exec_func = string.format(
-    "<cmd>lua require('lvim.core.terminal')._exec_toggle({ cmd = '%s', count = %d, direction = '%s'})<CR>",
-    opts.cmd,
-    opts.count,
-    opts.direction
-  )
-
-  require("lvim.keymappings").load {
-    normal_mode = { [opts.keymap] = exec_func },
-    term_mode = { [opts.keymap] = exec_func },
-  }
-
-  local wk_status_ok, wk = pcall(require, "which-key")
-  if not wk_status_ok then
-    return
-  end
-  wk.register({ [opts.keymap] = { opts.label } }, { mode = "n" })
+  vim.keymap.set({ "n", "t" }, opts.keymap, function()
+    M._exec_toggle { cmd = opts.cmd, count = opts.count, direction = opts.direction }
+  end, { desc = opts.label, noremap = true, silent = true })
 end
 
 M._exec_toggle = function(opts)
@@ -108,6 +93,7 @@ M.toggle_log_view = function(logfile)
   if vim.fn.executable(log_viewer) ~= 1 then
     log_viewer = "less +F"
   end
+  Log:debug("attempting to open: " .. logfile)
   log_viewer = log_viewer .. " " .. logfile
   local term_opts = vim.tbl_deep_extend("force", lvim.builtin.terminal, {
     cmd = log_viewer,

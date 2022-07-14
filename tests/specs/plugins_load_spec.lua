@@ -4,6 +4,12 @@ a.describe("plugin-loader", function()
   local plugins = require "lvim.plugins"
   local loader = require "lvim.plugin-loader"
 
+  pcall(function()
+    lvim.log.level = "debug"
+    package.loaded["packer.log"] = nil
+    package.loaded["lvim.core.log"] = nil
+  end)
+
   a.it("should be able to load default packages without errors", function()
     loader.load { plugins, lvim.plugins }
 
@@ -32,7 +38,8 @@ a.describe("plugin-loader", function()
       assert.truthy(package.loaded[plugin])
     end
   end)
-  a.it("should be able to rollback plugins without errors", function()
+
+  pending("should be able to rollback plugins without errors", function()
     local plugin = { name = "onedarker.nvim" }
     plugin.path = vim.tbl_filter(function(package)
       return package:match(plugin.name)

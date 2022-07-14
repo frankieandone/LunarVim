@@ -1,7 +1,5 @@
 local Log = {}
 
-local logfile = string.format("%s/%s.log", get_cache_dir(), "lvim")
-
 Log.levels = {
   TRACE = 1,
   DEBUG = 2,
@@ -13,21 +11,42 @@ vim.tbl_add_reverse_lookup(Log.levels)
 
 local notify_opts = {}
 
+function Log:set_level(level)
+  local logger_ok, _ = xpcall(function()
+    local log_level = Log.levels[level:upper()]
+    local structlog = require "structlog"
+    if structlog then
+      local logger = structlog.get_logger "lvim"
+      for _, s in ipairs(logger.sinks) do
+        s.level = log_level
+      end
+    end
+  end, debug.traceback)
+  if not logger_ok then
+    Log:debug("Unable to set logger's level: " .. debug.traceback())
+  end
+
+  local packer_ok, _ = xpcall(function()
+    package.loaded["packer.log"] = nil
+    require("packer.log").new { level = lvim.log.level }
+  end, debug.traceback)
+  if not packer_ok then
+    Log:debug("Unable to set packer's log level: " .. debug.traceback())
+  end
+end
+
 function Log:init()
   local status_ok, structlog = pcall(require, "structlog")
   if not status_ok then
     return nil
   end
 
-  package.loaded["packer.log"] = nil
-  require("packer.log").new { level = lvim.log.level }
-
   local log_level = Log.levels[(lvim.log.level):upper() or "WARN"]
   local lvim_log = {
     lvim = {
       sinks = {
         structlog.sinks.Console(log_level, {
-          async = false,
+          async = true,
           processors = {
             structlog.processors.Namer(),
             structlog.processors.StackWriter({ "line", "file" }, { max_parents = 0, stack_level = 2 }),
@@ -39,11 +58,11 @@ function Log:init()
             { level = structlog.formatters.FormatColorizer.color_level() }
           ),
         }),
-        structlog.sinks.File(log_level, logfile, {
+        structlog.sinks.File(log_level, self:get_path(), {
           processors = {
             structlog.processors.Namer(),
             structlog.processors.StackWriter({ "line", "file" }, { max_parents = 3, stack_level = 2 }),
-            structlog.processors.Timestamper "%H:%M:%S",
+            structlog.processors.Timestamper "%F %H:%M:%S",
           },
           formatter = structlog.formatters.Format( --
             "%s [%-5s] %s: %-30s",
@@ -155,7 +174,7 @@ end
 ---Retrieves the path of the logfile
 ---@return string path of the logfile
 function Log:get_path()
-  return logfile
+  return string.format("%s/%s.log", get_cache_dir(), "lvim")
 end
 
 ---Add a log entry at TRACE level

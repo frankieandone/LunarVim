@@ -70,14 +70,14 @@ function M.config()
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-      pickers = {
-        find_files = {
-          find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
-        },
-        live_grep = {
-          --@usage don't include the filename in the search results
-          only_sort_text = true,
-        },
+    },
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+      live_grep = {
+        --@usage don't include the filename in the search results
+        only_sort_text = true,
       },
     },
     extensions = {
@@ -89,24 +89,6 @@ function M.config()
       },
     },
   })
-end
-
-function M.code_actions()
-  local opts = {
-    winblend = 15,
-    layout_config = {
-      prompt_position = "top",
-      width = 80,
-      height = 12,
-    },
-    borderchars = lvim.builtin.telescope.defaults.borderchars,
-    border = {},
-    previewer = false,
-    shorten_path = false,
-  }
-  local builtin = require "telescope.builtin"
-  local themes = require "telescope.themes"
-  builtin.lsp_code_actions(themes.get_dropdown(opts))
 end
 
 function M.setup()
@@ -145,6 +127,12 @@ function M.setup()
   if lvim.builtin.project.active then
     pcall(function()
       require("telescope").load_extension "projects"
+    end)
+  end
+
+  if lvim.builtin.notify.active then
+    pcall(function()
+      require("telescope").load_extension "notify"
     end)
   end
 

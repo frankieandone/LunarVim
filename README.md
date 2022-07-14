@@ -29,7 +29,7 @@
 
 ## Install In One Command!
 
-Make sure you have the release version of Neovim (0.6.1+).
+Make sure you have the release version of Neovim (0.7+).
 
 ### Linux:
 
@@ -91,7 +91,7 @@ lvim.lsp.diagnostics.virtual_text = false
 
 -- Select which servers should be configured manually. Requires `:LvimCacheReset` to take effect.
 -- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
-vim.list_extend(lvim.lsp.override, { "pyright" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 
 -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -107,7 +107,6 @@ formatters.setup {
 -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "black" },
   {
     command = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.

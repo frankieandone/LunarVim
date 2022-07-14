@@ -41,7 +41,6 @@ return {
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
-    color = {},
     cond = nil,
   },
   python_env = {
@@ -67,7 +66,6 @@ return {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    color = {},
     cond = conditions.hide_in_width,
   },
   treesitter = {
@@ -112,7 +110,8 @@ return {
       local supported_linters = linters.list_registered(buf_ft)
       vim.list_extend(buf_client_names, supported_linters)
 
-      return "[" .. table.concat(buf_client_names, ", ") .. "]"
+      local unique_client_names = vim.fn.uniq(buf_client_names)
+      return "[" .. table.concat(unique_client_names, ", ") .. "]"
     end,
     color = { gui = "bold" },
     cond = conditions.hide_in_width,
@@ -139,7 +138,7 @@ return {
     color = {},
     cond = conditions.hide_in_width,
   },
-  filetype = { "filetype", cond = conditions.hide_in_width, color = {} },
+  filetype = { "filetype", cond = conditions.hide_in_width },
   scrollbar = {
     function()
       local current_line = vim.fn.line "."
